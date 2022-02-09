@@ -2,7 +2,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
         <a href="#" class="brand-link">
-            <span class="brand-text font-weight-light">Ventas</span>
+            <span class="brand-text font-weight-light ml-2">Ventas</span>
         </a>
 
         <div class="sidebar">
@@ -41,12 +41,12 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <router-link to="/" class="nav-link">
+                        <a href="/" class="nav-link">
                             <i class="nav-icon fas fa-power-off"></i>
                             <p>
                                 Cerrar sesión
                             </p>
-                        </router-link>
+                        </a>
                     </li>
                 </ul>
             </nav>

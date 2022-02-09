@@ -11,7 +11,7 @@
 
       <div class="content">
         <div class="container-fluid">
-          <router-view />
+          <router-view/>
         </div>
       </div>
     </div>
@@ -34,8 +34,8 @@
         Nav,
         Header
     },
-    beforeMount() {
-        document.body.className = "hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed";
+    beforeCreate() {
+      document.body.className = "";
     }
   }
 </script>

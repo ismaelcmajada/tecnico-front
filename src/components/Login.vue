@@ -33,7 +33,7 @@
             </div>
             <!-- /.col -->
             <div class="col-4">
-              <router-link class="btn btn-primary btn-block" to="/dashboard">Entrar</router-link>
+              <a class="btn btn-primary btn-block" href="/dashboard">Entrar</a>
             </div>
             <!-- /.col -->
           </div>
@@ -49,8 +49,8 @@
 
 <script>
 export default {
-    beforeMount() {
-        document.body.className = "hold-transition login-page";
+    beforeCreate() {
+        document.body.className = "login-page";
     }
 }
 </script>
