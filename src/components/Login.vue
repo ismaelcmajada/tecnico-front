@@ -5,9 +5,9 @@
       <div class="card-body">
         <p class="login-box-msg">Inicia sesión</p>
   
-        <form name="form" novalidate>
+        <form name="form" novalidate @submit.prevent="login">
           <div class="input-group mb-3">
-            <input type="username" class="form-control" name="identificacion" required placeholder="Identificación" />
+            <input type="username" class="form-control" name="email" required placeholder="Email"  v-model="email"/>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
@@ -15,7 +15,7 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="password" class="form-control" name="password" required placeholder="Contraseña" />
+            <input type="password" class="form-control" name="password" required placeholder="Contraseña"  v-model="password"/>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
@@ -24,16 +24,10 @@
           </div>
           <div class="row">
             <div class="col-8">
-              <div class="icheck-primary">
-                <input type="checkbox" id="remember">
-                <label for="remember">
-                  Recuerdame
-                </label>
-              </div>
             </div>
             <!-- /.col -->
             <div class="col-4">
-              <a class="btn btn-primary btn-block" href="/dashboard">Entrar</a>
+              <input type="submit" class="btn btn-primary btn-block" value="Entrar">
             </div>
             <!-- /.col -->
           </div>
@@ -48,11 +42,43 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex'
+import axios from "axios"
+
 export default {
-    beforeCreate() {
-        document.body.className = "login-page";
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+  methods: {
+    ...mapMutations(['logIn']),
+    async login() {
+      try {
+        const response = await axios.post(
+          "http://localhost:3000/api/user/login", 
+          {
+            email: this.email,
+            password: this.password,
+          } 
+        )
+
+        this.logIn(response.data)
+
+        window.location.href = '/dashboard'
+
+      } catch (error) {
+        this.$router.push("/");
+      } 
     }
+  },
+
+  beforeCreate() {
+    document.body.className = "login-page";
+  }
 }
+
 </script>
 
 <style scoped>

@@ -41,7 +41,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="/" class="nav-link">
+                        <a @click="logout()" class="nav-link">
                             <i class="nav-icon fas fa-power-off"></i>
                             <p>
                                 Cerrar sesión
@@ -53,3 +53,17 @@
         </div>
     </aside>
 </template>
+
+<script>
+import {mapMutations} from 'vuex'
+
+export default {
+    methods: {
+        ...mapMutations(['logOut']),
+        logout() {
+            this.logOut();
+            window.location.href = '/'
+        }
+    }
+}
+</script>
