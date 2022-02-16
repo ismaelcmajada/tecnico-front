@@ -8,7 +8,7 @@ import axios from 'axios'
 export default {
     async created() {
       try {
-        const response = await axios.get("http://localhost:3000/api/stores")
+        const response = await axios.get(`${process.env.VUE_APP_API_URL}/api/stores`)
 
         console.log(response.data)
 
