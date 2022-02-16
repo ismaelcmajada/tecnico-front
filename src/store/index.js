@@ -10,6 +10,7 @@ export default createStore({
     state: {
         logged: false,
         userId: "",
+        name: "",
         token: ""
     },
     plugins: [vuexLocal.plugin],
@@ -19,11 +20,13 @@ export default createStore({
 
             const jwtDecoded = VueJwtDecode.decode(token)
             state.userId = jwtDecoded._id
+            state.name = jwtDecoded.name
 
             state.logged = true
         },
         logOut(state) {
             state.userId = null
+            state.name = null
             state.token = null
             state.logged = false
         }

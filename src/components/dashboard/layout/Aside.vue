@@ -9,7 +9,7 @@
 
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="info">
-                    <a href="#" class="d-block">Ismael Cedrés</a>
+                    <a href="#" class="d-block">{{ name }}</a>
                 </div>
             </div>
 
@@ -58,6 +58,11 @@
 import {mapMutations} from 'vuex'
 
 export default {
+    data() {
+        return {
+            name: this.$store.state.name
+        }
+    },
     methods: {
         ...mapMutations(['logOut']),
         logout() {
