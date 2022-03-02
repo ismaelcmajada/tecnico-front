@@ -7,8 +7,6 @@
 
     <div class="content-wrapper">
 
-      <Header/>
-
       <div class="content">
         <div class="container-fluid">
           <router-view/>
@@ -25,14 +23,12 @@
 <script>
   import Nav from './layout/Nav.vue'
   import Aside from './layout/Aside.vue'
-  import Header from './layout/Header.vue'
 
   export default {
     name: 'Dashboard',
     components: {
         Aside,
-        Nav,
-        Header
+        Nav
     },
     beforeCreate() {
       document.body.className = "";

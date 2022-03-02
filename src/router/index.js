@@ -1,8 +1,8 @@
 import { createWebHistory, createRouter } from 'vue-router'
 import Login from './../components/Login.vue'
 import Dashboard from './../components/dashboard/Dashboard.vue'
-import Home from './../components/dashboard/Home.vue'
-import Ventas from './../components/dashboard/Ventas.vue'
+import Equipos from './../components/dashboard/Equipos.vue'
+import Reparaciones from './../components/dashboard/Reparaciones.vue'
 import store from '../store'
 
 const routes = [
@@ -36,11 +36,15 @@ const routes = [
         children: [
             {
                 path: '',
-                component: Home
+                component: Reparaciones
             },
             {
-                path: 'ventas',
-                component: Ventas
+                path: 'equipos',
+                component: Equipos
+            },
+            {
+                path: 'reparaciones',
+                component: Reparaciones
             }
         ]
     }

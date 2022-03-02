@@ -2,7 +2,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
         <a href="#" class="brand-link">
-            <span class="brand-text font-weight-light ml-2">Ventas</span>
+            <span class="brand-text font-weight-light ml-2">Soporte Técnico</span>
         </a>
 
         <div class="sidebar">
@@ -27,21 +27,21 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <router-link to="/dashboard" class="nav-link">
+                                <router-link to="/dashboard/reparaciones" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Inicio</p>
+                                    <p>Reparaciones</p>
                                 </router-link>
                             </li>
                             <li class="nav-item">
-                                <router-link to="/dashboard/ventas" class="nav-link">
+                                <router-link to="/dashboard/equipos" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Ventas</p>
+                                    <p>Equipos</p>
                                 </router-link>
-                            </li>
+                            </li> 
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a @click="logout()" class="nav-link">
+                        <a @click="logout()" class="nav-link bg-danger">
                             <i class="nav-icon fas fa-power-off"></i>
                             <p>
                                 Cerrar sesión
