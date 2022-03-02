@@ -81,6 +81,51 @@
                         <i class="fas fa-times"></i>
                       </button>
                   </td>
+                  <div class="modal" :id="'editarEquipo'+equipo._id" tabindex="-1">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Editar equipo</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <form @submit="updateEquipo($event, equipo._id)">
+                            <h5>Datos del equipo</h5>
+                            <div class="form-row">
+                              <div class="form-group col">
+                                <label :for="'nombre'+equipo._id">Nombre: </label>
+                                <input class="form-control" type="text" :value="equipo.nombre" :name="'nombre'+equipo._id" :id="'nombre'+equipo._id">
+                              </div>
+
+                              <div class="form-group col">
+                                <label :for="'procesador'+equipo._id">CPU: </label>
+                                <input class="form-control" type="text" :value="equipo.procesador" :name="'procesador'+equipo._id" :id="'procesador'+equipo._id">
+                              </div>
+                            </div>
+
+                            <div class="form-row">
+                              <div class="form-group col">
+                                <label :for="'ram'+equipo._id">RAM: </label>
+                                <input class="form-control" type="text" :value="equipo.ram" :name="'ram'+equipo._id" :id="'ram'+equipo._id">
+                              </div>
+
+                              <div class="form-group col">
+                                <label :for="'almacenamiento'+equipo._id">Almacenamiento: </label>
+                                <input class="form-control" type="text" :value="equipo.almacenamiento" :name="'almacenamiento'+equipo._id" :id="'almacenamiento'+equipo._id">
+                              </div>
+                            </div>
+                            <div class="form-row">
+                              <div class="form-group col">
+                                <input type="submit" class="btn btn-primary" value="Guardar" />
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </tr>
               </tbody>
             </table>
@@ -146,6 +191,20 @@ export default {
           console.log(error)
         }
       },
+
+      async updateEquipo(e, id) {
+        try {
+          await axios.put(`${process.env.VUE_APP_API_URL}/api/equipos/${id}`, {
+            nombre: e.target['nombre'+id].value,
+            procesador: e.target['procesador'+id].value,
+            ram: e.target['ram'+id].value,
+            almacenamiento: e.target['almacenamiento'+id].value
+          })
+        } catch (error) {
+          console.log(error)
+        }
+      },
+
       async removeEquipo(id) {
         try {
           await axios.delete(`${process.env.VUE_APP_API_URL}/api/equipos/${id}`)
