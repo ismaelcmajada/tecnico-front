@@ -37,6 +37,12 @@
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Equipos</p>
                                 </router-link>
+                            </li>
+                            <li v-if="admin" class="nav-item">
+                                <router-link to="/dashboard/tecnicos" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Técnicos</p>
+                                </router-link>
                             </li> 
                         </ul>
                     </li>
@@ -60,7 +66,8 @@ import {mapMutations} from 'vuex'
 export default {
     data() {
         return {
-            name: this.$store.state.name
+            name: this.$store.state.name,
+            admin: this.$store.state.admin
         }
     },
     methods: {

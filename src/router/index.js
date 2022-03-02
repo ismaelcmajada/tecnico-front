@@ -3,6 +3,7 @@ import Login from './../components/Login.vue'
 import Dashboard from './../components/dashboard/Dashboard.vue'
 import Equipos from './../components/dashboard/Equipos.vue'
 import Reparaciones from './../components/dashboard/Reparaciones.vue'
+import Tecnicos from './../components/dashboard/Tecnicos.vue'
 import store from '../store'
 
 const routes = [
@@ -45,6 +46,20 @@ const routes = [
             {
                 path: 'reparaciones',
                 component: Reparaciones
+            },
+            {
+                path: 'tecnicos',
+                component: Tecnicos,
+                beforeEnter(to, from, next){
+                    if(!store.state.admin) {
+                        next({
+                            path: '',
+                            replace: true
+                        })
+                    } else {
+                        next()
+                    }
+                },
             }
         ]
     }
