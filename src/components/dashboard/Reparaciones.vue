@@ -204,6 +204,7 @@
 
     methods: {
       inicializateDataTable() {
+        let esto = this
         $(function () {
           $("#reparacionesIncompletas").DataTable({
             paging: true,
@@ -225,6 +226,16 @@
             responsive: true,
             retrieve: true
           });
+           esto.reparacionesIncompletas.forEach(reparacion => {
+            $("#userSelect2" + reparacion._id).select2({
+              dropdownParent: $('#editarReparacion' + reparacion._id),
+              theme: 'bootstrap4'
+            });
+            $("#select2" + reparacion._id).select2({
+              dropdownParent: $('#editarReparacion' + reparacion._id),
+              theme: 'bootstrap4'
+            });
+          });
         })
       },
 
@@ -237,18 +248,7 @@
       },
 
       inicializateSelect2() {
-        let esto = this
         $(function () {
-          esto.reparacionesIncompletas.forEach(reparacion => {
-            $("#userSelect2" + reparacion._id).select2({
-              dropdownParent: $('#editarReparacion' + reparacion._id),
-              theme: 'bootstrap4'
-            });
-            $("#select2" + reparacion._id).select2({
-              dropdownParent: $('#editarReparacion' + reparacion._id),
-              theme: 'bootstrap4'
-            });
-          });
           $("#tecnico").select2({
             dropdownParent: $('#añadirReparacion'),
             theme: 'bootstrap4'
